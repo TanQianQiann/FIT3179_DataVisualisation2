@@ -7,7 +7,7 @@
 "data": [
   {
     "name": "rawData",
-    "url": "data/cleaned-world-data.csv",
+    "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/cleaned-world-data.csv",
     "format": {
       "type": "csv",
       "parse": {

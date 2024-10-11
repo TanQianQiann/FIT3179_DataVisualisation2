@@ -5,7 +5,7 @@
   "background": "#e2e3de",
   "title": "Percentage of GDP by Sector Across Countries",
   "data": {
-    "url": "data/total_dataset.csv",
+    "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/total_dataset.csv",
     "format": {"type": "csv"}
   },
   "params": [

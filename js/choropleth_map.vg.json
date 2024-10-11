@@ -5,7 +5,7 @@
   "height": 420,
   "background": "#e2e3de",
   "data": {
-    "url": "js/ne_110m_admin_0_countries.topojson",
+    "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/js/ne_110m_admin_0_countries.topojson",
     "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
   },
   "params": [
@@ -51,14 +51,14 @@
     },
     {
       "data": {
-        "url": "js/oceans.topojson",
+        "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/js/oceans.topojson",
         "format": {"type": "topojson", "feature": "oceans"}
       },
       "mark": {"type": "geoshape", "fill": "skyblue"}
     },
     {
       "data": {
-        "url": "js/WorldMapWithGraticules.topojson",
+        "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/js/WorldMapWithGraticules.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
       },
       "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
@@ -70,7 +70,7 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "data/cleaned-world-data.csv"
+              "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/cleaned-world-data.csv"
             },
             "key": "Country",
             "fields": ["Birth Rate", "Continent"]
@@ -118,7 +118,7 @@
     },
     {
       "data": {
-        "url": "data/cleaned-world-data.csv",
+        "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/cleaned-world-data.csv",
         "format": { "type": "csv" }
       },
       "transform": [
@@ -133,7 +133,7 @@
       "mark": {
         "type": "text",
         "align": "center",
-        "dx": 310,
+        "dx": 350,
         "dy": 280,
         "fontSize": 12,
         "fontWeight": "bold"

@@ -5,7 +5,7 @@
   "background": "#e2e3de",
   "title": "GDP and Life Expectancy Across Countries",
   "data": {
-    "url": "data/cleaned-world-data.csv"
+    "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/cleaned-world-data.csv"
   },
   "params": [
     {
