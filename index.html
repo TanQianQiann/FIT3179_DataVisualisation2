@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FIT3179 Data Visualization 2</title>
+
+    <!-- Import Vega & Vega-Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- Import pure.css -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+      integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"
+      crossorigin="anonymous"
+    />
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS for styles -->
+    <style>
+      body {
+        font-family: "Open Sans", sans-serif;
+        background-color: #c4bdb7;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .footer {
+        background-color: #c4bdb7; /* Same background color as the cards */
+        padding: 20px; /* Padding for spacing */
+        text-align: center; /* Center text */
+        border-radius: 10px; /* Rounded corners */
+        margin-top: 10px; /* Space above the footer */
+        font-family: "Open Sans", sans-serif; /* Consistent font */
+      }
+
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: center;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+        font-family: "EB Garamond", serif;
+        font-size: 38px;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .content-container {
+        background-color: #f9f9f9; /* Light background */
+        padding: 20px 40px; /* Padding inside the container */
+        border: 2px solid #e0e0e0; /* Border around the container */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        margin: 20px auto; /* Center the container and add margin */
+        /* max-width: 900px; Limit the width of the container */
+        text-align: center; /* Center-align text inside */
+        width: 80%;
+      }
+
+      .card-narrow {
+        background-color: #e2e3de;
+        padding: 15px;
+        border-radius: 8px;
+        /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); */
+        margin-bottom: 30px;
+        width: 48%; /* Set width to 48% so two cards fit in one row */
+        height: 700px; /* Set a fixed height for the card */
+        box-sizing: border-box;
+        margin: 10px;
+
+        /* Flexbox to center content inside the card */
+        display: flex;
+        justify-content: center; /* Horizontally center content */
+        align-items: center; /* Vertically center content */
+        flex-direction: column; /* Stack charts vertically */
+
+        padding-top: 40px; /* Add padding to the top */
+      }
+
+      .card-wide {
+        background-color: #e2e3de;
+        padding: 15px;
+        border-radius: 8px;
+        /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);  */
+        margin-bottom: 30px;
+        width: calc(100% - 50px); /* Set fixed width in pixels */
+        height: 600px; /* Set fixed height in pixels */
+
+        margin: 10px;
+
+        display: flex;
+        justify-content: center; /* Horizontally center content */
+        align-items: center; /* Vertically center content */
+        flex-direction: column; /* Stack charts vertically */
+
+        padding-top: 40px; /* Add padding to the top */
+        padding-left: 20px;
+      }
+
+      .card-narrow-waffle {
+        background-color: #e2e3de;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        width: 48%; /* Set width to 48% so two cards fit in one row */
+        height: 700px; /* Set a fixed height for the card */
+        box-sizing: border-box;
+        margin: 10px;
+
+        /* Flexbox to center content inside the card */
+        display: flex;
+        justify-content: center; /* Horizontally center content */
+        align-items: center; /* Vertically center content */
+        flex-direction: column; /* Stack charts vertically */
+
+        padding-top: 40px; /* Add padding to the top */
+        padding-left: 30px;
+        padding-right: 30px; /* Add right padding to balance with left */
+        text-align: center; /* Center text in all direct children */
+      }
+
+      .text-container {
+        flex: 0 0 15%; /* Fixed height for the text area */
+        padding: 10px; /* Padding for the text area */
+        text-align: left; /* Align text to the left */
+        background-color: #e2e3de;
+        width: 90%;
+
+        /* padding-right: 30px; */
+        margin-top: 10px;
+        border-radius: 15px;
+        text-align: justify;
+
+        font-family: "Roboto", sans-serif;
+        font-weight: 550;
+      }
+
+      .text-container-waffle {
+        flex: 0 0 15%; /* Fixed height for the text area */
+        /* padding: 10px; Padding for the text area */
+        text-align: left; /* Align text to the left */
+        background-color: #e2e3de;
+        width: 100%;
+
+        /* padding-right: 30px; */
+        margin-top: 10px;
+        border-radius: 15px;
+        text-align: justify;
+
+        font-family: "Roboto", sans-serif;
+        font-weight: 550;
+      }
+
+      .text-container-narrow {
+        flex: 0 0 15%; /* Fixed height for the text area */
+        /* padding: 5px; Padding for the text area */
+        text-align: left; /* Align text to the left */
+        background-color: #e2e3de;
+        width: 95%;
+
+        margin-top: 10px;
+        border-radius: 15px;
+        text-align: justify;
+
+        font-family: "Roboto", sans-serif;
+        font-weight: 550;
+      }
+
+      .card h2 {
+        margin-top: 0;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      /* Media query to stack cards on smaller screens */
+      @media (max-width: 768px) {
+        .card {
+          width: 100%;
+        }
+      }
+
+      .vis-container {
+        width: 100%;
+        height: calc(100% - 40px); /* Adjust the height to fit the content */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <!-- Page Header -->
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <div class="content-container">
+            <h1>Global Economic Classifications and Development Insights</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visualization Cards -->
+      <div class="card-container">
+        <!-- Choropleth Map Card -->
+        <div class="card-wide">
+          <div id="vis1" class="vis-container"></div>
+          <div class="text-container">
+            <p>
+              <strong>Higher birth rates</strong> in
+              <span style="color: #377eb8;">African countries</span>, largely
+              driven by factors such as limited access to family planning and
+              cultural norms favouring larger families. In contrast, regions
+              like <span style="color: #e41a1c;">North America</span>,
+              <span style="color: #ff7f00;">Europe</span>, and parts of
+              <span style="color: #f734a6;">Asia</span> exhibit
+              <strong>lower birth rates</strong>, often attributed to higher
+              living costs, increased access to contraception, and a trend
+              toward smaller family sizes due to economic and social changes.
+              The demographic contrast highlights how rapid population growth in
+              <span style="color: #377eb8;">Africa</span> can lead to resource
+              strain and challenges in healthcare and education, while in
+              developed regions, aging populations and shrinking workforces pose
+              economic sustainability concerns.
+            </p>            
+          </div>
+        </div>
+
+        <!-- Bubble Plot Card -->
+        <div class="card-wide">
+          <div id="vis2" class="vis-container"></div>
+          <div class="text-container">
+            <p>
+              <span style="color: #e41a1c;">The United States of America</span> and
+              <span style="color: #f734a6;">China</span> stand out with both <strong>high GDP</strong>
+              and <strong>life expectancy</strong>, indicating strong economic performance paired
+              with advanced healthcare. In contrast, countries like
+              <span style="color: #377eb8;">Chad</span> and
+              <span style="color: #377eb8;">Togo</span> display significantly
+              <strong>lower GDP</strong> and <strong>shorter life expectancy</strong>, illustrating the economic
+              and health challenges faced by many
+              <span style="color: #377eb8;">African</span> nations.
+              <span style="color: #ff7f00;">Europe</span>, particularly with
+              countries like <span style="color: #ff7f00;">Iceland</span>,
+              demonstrates high GDP and life expectancy, showing a balanced
+              development of wealth and health on the continent.
+            </p>            
+          </div>
+        </div>
+
+        <!-- Waffle Chart Card -->
+        <div class="card-narrow-waffle">
+          <div id="vis3" class="vis-container"></div>
+          <div class="text-container-waffle">
+            <p>
+              A significant <span style="color: #e4b90f;">70%</span> of the world's nations are classified as 
+              <span style="color: #e4b90f;">emerging countries</span>, reflecting the <strong>rapid development</strong> happening across various regions. In contrast, 
+              <span style="color: #FF4B33;">advanced countries</span> make up <span style="color: #FF4B33;">24%</span>, indicating a smaller but well-established group of economically developed nations. The remaining 
+              <span style="color: #7F8C8D;">6%</span> represents countries with <strong>unstable economies</strong>. These may encompass small island nations, war-torn countries, or those facing significant political and social challenges.
+            </p>            
+          </div>
+        </div>
+
+        <!-- Area Diagram Card -->
+        <div class="card-narrow">
+          <div id="vis5" class="vis-container"></div>
+          <div class="text-container-narrow">
+            <p>
+              The <span style="color: #c8845a;">service sector</span> dominated most economies, followed by 
+              <span style="color: #e2c15c;">industry</span>, 
+              <span style="color: #b77bb1;">manufacturing</span>, and 
+              <span style="color: #4087c9;">agriculture</span>. A noticeable decline across all sectors since 2021 may be linked to global economic shifts, including the COVID-19 pandemic, supply chain disruptions, and inflationary pressures. In the case of <strong>Malaysia</strong>, the <span style="color: #c8845a;">service sector</span> consistently leads as the largest contributor to GDP, followed by 
+              <span style="color: #e2c15c;">industry</span> and 
+              <span style="color: #b77bb1;">manufacturing</span>. The steady growth of the 
+              <span style="color: #c8845a;">service sector</span> reflects the country's shift toward a more service-oriented economy, encompassing areas such as finance, tourism, and technology.
+            </p>            
+          </div>
+        </div>
+
+        <!-- Sankey Card -->
+        <div class="card-wide">
+          <div id="vis4" class="vis-container"></div>
+          <div class="text-container">
+            <p>
+              <span style="color: #f734a6;">Asia</span> and
+              <span style="color: #377eb8;">Africa</span> have a significant
+              proportion of <span style="color: #aaaaaa;">low-income</span> and <span style="color: #a5a5e2;">lower-middle-income</span> populations,
+              underscoring the economic challenges faced in these regions.
+              Conversely, <span style="color: #ff7f00;">Europe</span> and
+              <span style="color: #e41a1c;">North America</span> are primarily
+              represented in the <span style="color: #544cc2;">high-income</span> and <span style="color: #5c5cc6;">upper-middle-income</span> groups,
+              showcasing their economic stability. This stark contrast in income
+              distribution emphasizes the ongoing global disparities and the
+              urgent need for targeted policies to support economic development
+              in lower-income regions.
+            </p>            
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End page -->
+
+    <script type="text/javascript">
+      var specVis1 = "js/choropleth_map.vg.json";
+      var specVis2 = "js/bubbleplot.vg.json";
+      var specVis3 = "js/wafflechart.vg.json";
+      var specVis4 = "js/sankeydiagram.vg.json";
+      var specVis5 = "js/areachart.vg.json";
+
+      vegaEmbed("#vis1", specVis1, { actions: false })
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      vegaEmbed("#vis2", specVis2, { actions: false })
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      vegaEmbed("#vis3", specVis3, { actions: false })
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      vegaEmbed("#vis4", specVis4, { actions: false })
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+
+      vegaEmbed("#vis5", specVis5, { actions: false })
+        .then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        })
+        .catch(console.error);
+    </script>
+  </body>
+
+  <footer class="footer">
+    <p>✩⋆Tan Qian Qian⋆☾ 2024 </p>
+    <p>Data Sources: <a href="https://github.com/its-me-abhishek/global-data-dashboard/blob/main/world-data-2023.csv" style="color: #29297e;">Global Country Information Dataset 2023</a> &
+      <a href="https://www.kaggle.com/datasets/mjshri23/life-expectancy-and-socio-economic-world-bank" style="color: #29297e;">Socio-Economic Income Group</a> &
+      <a href="https://www.kaggle.com/datasets/jeanetteponder/world-economic-classifications" style="color: #29297e;">World Economic Classifications</a> &
+      <a href="https://databank.worldbank.org/source/world-development-indicators#" style="color: #29297e;">World Bank Data</a>
+    </p>
+  </footer>
+
+</html>
