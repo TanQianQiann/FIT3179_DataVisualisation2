@@ -1,9 +1,22 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 480,
+  "width": 445,
   "height": 300,
   "background": "#e2e3de",
   "title": "Percentage of GDP by Sector Across Countries",
+  "config": {
+    "text": { "font": "Open Sans" },
+    "background": "transparent",
+    "axis": {
+      "labelFont": "Open Sans",
+      "titleFont": "Open Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "grid": false
+    },
+    "legend": { "labelFont": "Open Sans", "titleFont": "Open Sans" },
+    "view": { "stroke": null }
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/total_dataset.csv",
     "format": {"type": "csv"}
@@ -78,7 +91,7 @@
           "value": 0.5
         },
         "tooltip": [
-          {"field": "Year", "type": "temporal", "title": "Year"},
+          {"field": "Year", "type": "temporal", "title": "Year", "format": "%Y"},
           {"field": "Modified Series Name", "type": "nominal", "title": "Sector"},
           {
             "field": "Value",

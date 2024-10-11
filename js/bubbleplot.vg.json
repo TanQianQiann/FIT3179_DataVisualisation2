@@ -1,8 +1,21 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 370,
+  "width": 620,
+  "height": 390,
   "background": "#e2e3de",
+  "config": {
+    "text": { "font": "Open Sans" },
+    "background": "transparent",
+    "axis": {
+      "labelFont": "Open Sans",
+      "titleFont": "Open Sans",
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "grid": false
+    },
+    "legend": { "labelFont": "Open Sans", "titleFont": "Open Sans" },
+    "view": { "stroke": null }
+  },
   "title": "GDP and Life Expectancy Across Countries",
   "data": {
     "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/cleaned-world-data.csv"

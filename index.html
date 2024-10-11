@@ -107,20 +107,35 @@
         background-color: #e2e3de;
         padding: 15px;
         border-radius: 8px;
-        /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);  */
-        margin-bottom: 30px;
-        width: calc(100% - 50px); /* Set fixed width in pixels */
-        height: 600px; /* Set fixed height in pixels */
-
+        width: calc(100% - 50px);
+        height: 500px;
         margin: 10px;
-
+        
         display: flex;
-        justify-content: center; /* Horizontally center content */
-        align-items: center; /* Vertically center content */
-        flex-direction: column; /* Stack charts vertically */
-
-        padding-top: 40px; /* Add padding to the top */
+        justify-content: left;
+        align-items: left;
+        flex-direction: row; /* Swap content direction: Text on the right, chart on the left */
+        
+        padding-top: 40px;
+        align-items: center; /* Centers the content vertically */
         padding-left: 20px;
+      }
+
+      .card-wide-reverse {
+        background-color: #e2e3de;
+        padding: 15px;
+        border-radius: 8px;
+        width: calc(100% - 50px);
+        height: 500px;
+        margin: 10px;
+        
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        flex-direction: row-reverse; /* Swap content direction: Text on the right, chart on the left */
+        
+        padding-top: 40px;
+        align-items: center; /* Centers the content vertically */
       }
 
       .card-narrow-waffle {
@@ -142,23 +157,18 @@
         padding-top: 40px; /* Add padding to the top */
         padding-left: 30px;
         padding-right: 30px; /* Add right padding to balance with left */
-        text-align: center; /* Center text in all direct children */
+        text-align: center;
       }
 
       .text-container {
-        flex: 0 0 15%; /* Fixed height for the text area */
-        padding: 10px; /* Padding for the text area */
-        text-align: left; /* Align text to the left */
+        flex: 0.7; /* Allows the text area to take up available space */
+        padding: 10px;
         background-color: #e2e3de;
-        width: 90%;
-
-        /* padding-right: 30px; */
-        margin-top: 10px;
         border-radius: 15px;
-        text-align: justify;
-
+        margin-right: 15px; /* Spacing between text and vis container */
         font-family: "Roboto", sans-serif;
         font-weight: 550;
+        text-align: justify;
       }
 
       .text-container-waffle {
@@ -166,7 +176,7 @@
         /* padding: 10px; Padding for the text area */
         text-align: left; /* Align text to the left */
         background-color: #e2e3de;
-        width: 100%;
+        width: 95%;
 
         /* padding-right: 30px; */
         margin-top: 10px;
@@ -182,7 +192,7 @@
         /* padding: 5px; Padding for the text area */
         text-align: left; /* Align text to the left */
         background-color: #e2e3de;
-        width: 95%;
+        width: 90%;
 
         margin-top: 10px;
         border-radius: 15px;
@@ -206,8 +216,26 @@
       }
 
       .vis-container {
-        width: 100%;
-        height: calc(100% - 40px); /* Adjust the height to fit the content */
+        text-align: left;
+        width: 100%; /* Let the container take full width */
+        height: auto; /* Height adapts to content */
+        background-color: #e2e3de;
+        flex: 1.8; /* Allows the vis container to take more space than the text container */
+        display: flex; /* Flexbox helps align the content */
+        justify-content: center; /* Centers the content inside */
+        align-items: center; /* Centers the content vertically */
+      }
+
+      .vis-container-waffle {
+        text-align: left;
+        width: 100%; /* Let the container take full width */
+        height: auto; /* Height adapts to content */
+        background-color: #e2e3de;
+        flex: 1.8; /* Allows the vis container to take more space than the text container */
+        display: flex; /* Flexbox helps align the content */
+        justify-content: center; /* Centers the content inside */
+        align-items: center; /* Centers the content vertically */
+        text-align: center;
       }
     </style>
   </head>
@@ -250,7 +278,7 @@
         </div>
 
         <!-- Bubble Plot Card -->
-        <div class="card-wide">
+        <div class="card-wide-reverse">
           <div id="vis2" class="vis-container"></div>
           <div class="text-container">
             <p>
@@ -273,7 +301,7 @@
 
         <!-- Waffle Chart Card -->
         <div class="card-narrow-waffle">
-          <div id="vis3" class="vis-container"></div>
+          <div id="vis3" class="vis-container-waffle"></div>
           <div class="text-container-waffle">
             <p>
               A significant <span style="color: #e4b90f;">70%</span> of the world's nations are classified as 

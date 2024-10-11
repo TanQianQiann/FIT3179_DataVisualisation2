@@ -1,9 +1,22 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "height": 370,
-    "width": 400,
+    "height": 330,
+    "width": 350,
     "title": "Distribution of Advanced and Emerging Countries",
     "background": "#e2e3de",
+    "config": {
+      "text": { "font": "Open Sans" },
+      "background": "transparent",
+      "axis": {
+        "labelFont": "Open Sans",
+        "titleFont": "Open Sans",
+        "labelFontSize": 12,
+        "titleFontSize": 14,
+        "grid": false
+      },
+      "legend": { "labelFont": "Open Sans", "titleFont": "Open Sans" },
+      "view": { "stroke": null }
+    },
     "data": {
       "url": "https://raw.githubusercontent.com/TanQianQiann/FIT3179_DataVisualisation2/main/data/imfcountries.csv"
     },
